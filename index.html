@@ -32,10 +32,17 @@
 			}
 			.reveal .tiles a {
 				display: inline-block;
-				margin: 1em;
+				width: 4em;
+				margin: 1em .5em;
 				padding: 2em 1em;
-				background: rgba(255, 255, 255, 0.25);
+				background: rgba(255, 255, 255, 0.125);
+				opacity: .666;
 				text-align: center;
+				border-radius: 7px;
+				transition: opacity .1666s ease-in-out;
+			}
+			.reveal .tiles a:hover {
+				opacity: 1;
 			}
 		</style>
 
@@ -126,7 +133,7 @@
 					<section>
 						<h2>Finished</h2>
 						<ul class="tiles">
-							<li><a href="https://chrisruppel.com/work/" target="_blank" rel="noopener">Hire me!</a></li>
+							<li><a href="https://chrisruppel.com/work/" target="_blank" rel="noopener">hire me!</a></li>
 							<li><a href="https://twitter.com/rupl" target="_blank" rel="noopener">twitter</a></li>
 							<li><a href="https://github.com/rupl" target="_blank" rel="noopener">github</a></li>
 						</ul>
