@@ -12,6 +12,33 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
+		<!-- custom styles -->
+		<style type="text/css">
+			.reveal code {
+				display: inline-block;
+				background: #888;
+				border-radius: 7px;
+				padding: 0 .2em;
+				font-family: 'Roboto mono', monospace;
+				text-shadow: .05em .05em 0 rgba(0, 0, 0, .666);
+			}
+			.reveal .compare {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.reveal .tiles li {
+				display: inline-block;
+			}
+			.reveal .tiles a {
+				display: inline-block;
+				margin: 1em;
+				padding: 2em 1em;
+				background: rgba(255, 255, 255, 0.25);
+				text-align: center;
+			}
+		</style>
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -27,6 +54,84 @@
 				<section>
 					<h1>Progressive<br> Web Apps<br><small>for all Drupal sites</small></h1>
 				</section>
+				<section>
+					<h2>What's a PWA?</h2>
+					<p><a href="https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/" target="_blank" rel="noopener">Progressive Web App origin story</a></p>
+					<ul>
+						<li>Responsive website</li>
+						<li>Network resilient</li>
+						<li>Native-feeling</li>
+						<li>Instant install</li>
+						<li>Discoverable</li>
+						<li>Safely delivered</li>
+						<li>...and more</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Main ingredients</h2>
+						<dl>
+							<dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a></dt>
+							<dd>Controls network interaction and manages offline functionality.</dd>
+							<dt><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json">manifest.json</a></dt>
+							<dd>Metadata which makes your website installable and discoverable.</dd>
+						</dl>
+					</section>
+					<section>
+						<h2>Service Worker</h2>
+						<p>A separate JavaScript thread which has<br> listeners for network and app lifecycle events.</p>
+						<p>Kind of like a proxy server for the browser.<br> Or a friendly, helpful man-in-the-middle attack.</p>
+					</section>
+					<section>
+						<h2>manifest.json</h2>
+						<p>Intended to replace the wall of <code>&lt;meta&gt;</code> that define app name, description, browser chrome color, favicons, and so forth.</p>
+						<p>Provides branding once the site is added to homescreen. Defines splash screen of a PWA.</p>
+					</section>
+					<section>
+						<h2>Offline + manifest</h2>
+						<div class="compare">
+							<img src="img/screen-offline.png" alt="screenshot of offline webpage" style="width: 25%; height: auto;">
+							<span style="font-size: 5em; padding: 0 .2em; ">➡</span>
+							<img src="img/screen-pwa-splash.png" alt="screenshot of PWA splash screen" style="width: 25%; height: auto;">
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>PWA in Drupal</h2>
+						<p class="fragment">Good news! Drupal makes websites<br> so there's 100% compatability.</p>
+					</section>
+					<section>
+						<h2>There's a module for that</h2>
+						<p><a href="https://drupal.org/project/pwa" target="_blank" rel="noopener">PWA Drupal module</a> provides near drop-in support to turn your D7 website into a PWA.</p>
+						<p class="fragment"><small>(very near 1.0 release)</small></p>
+					</section>
+					<section>
+						<h2>PWA Module can...</h2>
+						<ul>
+							<li class="fragment">Precache your preferred URLs</li>
+							<li class="fragment">Go offline after one cache clear</li>
+							<li class="fragment">Provide manifest.json for installable app</li>
+							<li class="fragment">Configure (almost) everything via admin UI</li>
+							<li class="fragment"><strong>Uninstall SW when module disappears</strong></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Self uninstall</h2>
+						<p>Built-in so the SW doesn't overstay its welcome when you disable the module. No <em>zombie workers</em>!</p>
+						<p class="fragment">This is a concern for any domain, but especially likely on plugin-based CMS like Drupal or WordPress.</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Finished</h2>
+						<ul class="tiles">
+							<li><a href="https://chrisruppel.com/work/" target="_blank" rel="noopener">Hire me!</a></li>
+							<li><a href="https://twitter.com/rupl" target="_blank" rel="noopener">twitter</a></li>
+							<li><a href="https://github.com/rupl" target="_blank" rel="noopener">github</a></li>
+						</ul>
+					</section>
+				</section>
 			</div>
 		</div>
 
@@ -38,6 +143,8 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				defaultTiming: 600,
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
