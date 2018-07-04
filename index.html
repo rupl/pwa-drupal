@@ -152,11 +152,37 @@
 						</ul>
 						<p class="fragment">Instead of opinionated implementations, these bits are probably best supplied with a Drupal API.</p>
 					</section>
+					<section>
+						<h2>PWA in action</h2>
+						<ol>
+							<li class="fragment">Install module &amp; save configuration</li>
+							<li class="fragment">Clear cache</li>
+							<li class="fragment">PWA module will make requests to your cache whitelist and cache all assets found within HTML response!!!</li>
+							<li class="fragment">Your cache is pre-filled with any CSS/JS found within the cached URLs.</li>
+						</ol>
+					</section>
 				</section>
 				<section>
-					<h2>Service Worker API</h2>
-					<p><a href="https://www.drupal.org/project/serviceworker/issues/2679457">#2679457</a> is a Service Worker API roadmap. Hashing out ideas for a central Drupal API that allows modules to request custom functionality.</p>
-					<p class="fragment">Using frontend community tools, we can supply a "drupal builder" based on hooks.</p>
+					<section>
+						<h2>Future Drupal plans</h2>
+						<p class="fragment">We're starting with opinionated features and will use our experiences to make flexible APIs.</p>
+					</section>
+					<section>
+						<h2>Service Worker API</h2>
+						<p><a href="https://www.drupal.org/project/serviceworker/issues/2679457">#2679457</a> is a Service Worker API roadmap. Hashing out ideas for a central Drupal API that allows modules to request custom functionality.</p>
+						<p class="fragment">Using frontend community tools, we can supply a "Drupal builder" based on good ol' hooks.</p>
+					</section>
+					<section>
+						<h2>Ideal Outcome</h2>
+						<p>Allowing unrelated modules/themes to request specific features of PWA functionality.</p>
+						<ul>
+							<li class="fragment">Push notification module</li>
+							<li class="fragment">Background sync module</li>
+							<li class="fragment">PWA 2.0 reduced to manifest.json config</li>
+							<li class="fragment">Views config that caches specific Ajax paths offline</li>
+							<li class="fragment">Themes that provide an "app shell" and dynamically load new URLs as a faux-<abbr title="single-page application">SPA</abbr></li>
+						</ul>
+					</section>
 				</section>
 				<section>
 					<section>
