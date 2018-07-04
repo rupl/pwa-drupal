@@ -65,13 +65,13 @@
 					<h2>What's a PWA?</h2>
 					<p><a href="https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/" target="_blank" rel="noopener">Progressive Web App origin story</a></p>
 					<ul>
-						<li>Responsive website</li>
-						<li>Network resilient</li>
-						<li>Native-feeling</li>
-						<li>Instant install</li>
-						<li>Discoverable</li>
-						<li>Safely delivered</li>
-						<li>...and more</li>
+						<li class="fragment">Responsive website</li>
+						<li class="fragment">Network resilient</li>
+						<li class="fragment">Native-feeling</li>
+						<li class="fragment">Instant install</li>
+						<li class="fragment">Discoverable</li>
+						<li class="fragment">Safely delivered</li>
+						<li class="fragment">...and more</li>
 					</ul>
 				</section>
 				<section>
@@ -87,19 +87,19 @@
 					<section>
 						<h2>Service Worker</h2>
 						<p>A separate JavaScript thread which has<br> listeners for network and app lifecycle events.</p>
-						<p>Kind of like a proxy server for the browser.<br> Or a friendly, helpful man-in-the-middle attack.</p>
+						<p class="fragment">A friendly, useful man-in-the-middle attack.</p>
 					</section>
 					<section>
 						<h2>manifest.json</h2>
 						<p>Intended to replace the wall of <code>&lt;meta&gt;</code> that define app name, description, browser chrome color, favicons, and so forth.</p>
-						<p>Provides branding once the site is added to homescreen. Defines splash screen of a PWA.</p>
+						<p class="fragment">Provides branding once the site is added to homescreen. Defines splash screen of a PWA.</p>
 					</section>
 					<section>
-						<h2>Offline + manifest</h2>
+						<h2>SW + manifest</h2>
 						<div class="compare">
 							<img src="img/screen-offline.png" alt="screenshot of offline webpage" style="width: 25%; height: auto;">
-							<span style="font-size: 5em; padding: 0 .2em; ">➡</span>
-							<img src="img/screen-pwa-splash.png" alt="screenshot of PWA splash screen" style="width: 25%; height: auto;">
+							<span class="fragment" style="font-size: 5em; padding: 0 .2em; ">➡</span>
+							<img class="fragment" src="img/screen-pwa-splash.png" alt="screenshot of PWA splash screen" style="width: 25%; height: auto;">
 						</div>
 					</section>
 				</section>
@@ -110,7 +110,7 @@
 					</section>
 					<section>
 						<h2>There's a module for that</h2>
-						<p><a href="https://drupal.org/project/pwa" target="_blank" rel="noopener">PWA Drupal module</a> provides near drop-in support to turn your D7 website into a PWA.</p>
+						<p><a href="https://drupal.org/project/pwa" target="_blank" rel="noopener">PWA Drupal module</a> provides near drop-in support to turn your D7 website into a simple PWA.</p>
 						<p class="fragment"><small>(very near 1.0 release)</small></p>
 					</section>
 					<section>
@@ -125,15 +125,30 @@
 					</section>
 					<section>
 						<h2>Self uninstall</h2>
-						<p>Built-in so the SW doesn't overstay its welcome when you disable the module. No <em>zombie workers</em>!</p>
+						<p>The SW doesn't overstay its welcome when you disable the module. No <em>zombie workers</em>!</p>
 						<p class="fragment">This is a concern for any domain, but especially likely on plugin-based CMS like Drupal or WordPress.</p>
 					</section>
+					<section>
+						<h2>PWA module cannot...</h2>
+						<ul>
+							<li class="fragment">Handle push notifications</li>
+							<li class="fragment">Handle background sync</li>
+							<li class="fragment">Choose cache strategy</li>
+						</ul>
+						<p class="fragment">Instead of opinionated implementations, these bits are probably best supplied with a Drupal API.</p>
+					</section>
+				</section>
+				<section>
+					<h2>Service Worker API</h2>
+					<p><a href="https://www.drupal.org/project/serviceworker/issues/2679457">#2679457</a> is a Service Worker API roadmap. Hashing out ideas for a central Drupal API that allows modules to request custom functionality.</p>
+					<p class="fragment">Using frontend community tools, we can supply a "drupal builder" based on hooks.</p>
 				</section>
 				<section>
 					<section>
 						<h2>Finished</h2>
+						<p>Say hi:</p>
 						<ul class="tiles">
-							<li><a href="https://chrisruppel.com/work/" target="_blank" rel="noopener">hire me!</a></li>
+							<li><a href="https://chrisruppel.com/work/" target="_blank" rel="noopener">chris</a></li>
 							<li><a href="https://twitter.com/rupl" target="_blank" rel="noopener">twitter</a></li>
 							<li><a href="https://github.com/rupl" target="_blank" rel="noopener">github</a></li>
 						</ul>
