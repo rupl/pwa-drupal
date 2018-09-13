@@ -55,6 +55,15 @@
 			.reveal .tiles a:hover {
 				opacity: 1;
 			}
+
+			.reveal .slides section img.scroll {
+				opacity: 1;
+				visibility: visible;
+				transition: transform .333s ease-in-out;
+			}
+			.reveal img.scroll.visible {
+				transform: translateY(-50%);
+			}
 		</style>
 
 		<!-- Printing and PDF exports -->
@@ -73,7 +82,7 @@
 					<h1>Progressive<br> Web Apps<br><small>for all Drupal sites</small></h1>
 					<div class="fragment expire">
 						Best Read Before:<br>
-						<time datetime="2018-10-04">4. Oct 2018</time>
+						<time datetime="2018-12-13">13. Dec 2018</time>
 					</div>
 				</section>
 				<section>
@@ -93,58 +102,64 @@
 					<section>
 						<h2>Main ingredients</h2>
 						<dl>
-							<dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a></dt>
-							<dd>Controls network interaction and manages offline functionality.</dd>
-							<dt><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json">manifest.json</a></dt>
-							<dd>Metadata which makes your website installable and discoverable.</dd>
+							<span class="fragment">
+								<dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a></dt>
+								<dd>Controls network interaction, manages offline functionality, and increases engagement with website. Brings native app features to the web.</dd>
+							</span>
+							<span class="fragment">
+								<dt><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json">manifest.json</a></dt>
+								<dd>Makes your website installable and discoverable.</dd>
+							</span>
 						</dl>
 					</section>
 					<section>
 						<h2>Service Worker</h2>
-						<p>A separate JavaScript thread which has<br> listeners for network and app lifecycle events.</p>
-						<p class="fragment">A friendly, useful man-in-the-middle attack.</p>
+						<p>A separate JavaScript thread which has listeners<br> for network requests and app lifecycle events.</p>
+						<p class="fragment">🔐 HTTPS is a hard dependency!</p>
 					</section>
 					<section>
 						<h2>manifest.json</h2>
-						<p>Intended to replace the wall of <code>&lt;meta&gt;</code> that define app name, description, browser chrome color, favicons, and so forth.</p>
-						<p class="fragment">Provides branding once the site is added to homescreen. Defines splash screen of a PWA.</p>
+						<p>Provides branding when site is added to homescreen</p>
+						<p class="fragment">Defines splash screen of a PWA</p>
+						<p class="fragment">Allows PWAs to appear in app stores</p>
 					</section>
 					<section>
 						<h2>SW + manifest</h2>
 						<div class="compare">
-							<img src="img/screen-offline.png" alt="screenshot of offline webpage" style="width: 25%; height: auto;">
+							<img src="img/screen-offline.png" alt="typical offline webpage" style="width: 25%; height: auto;">
 							<span class="fragment" style="font-size: 5em; padding: 0 .2em; ">➡</span>
-							<img class="fragment" src="img/screen-pwa-splash.png" alt="screenshot of PWA splash screen" style="width: 25%; height: auto;">
+							<img class="fragment" src="img/screen-pwa-splash.png" alt="PWA splash screen" style="width: 25%; height: auto;">
 						</div>
 					</section>
 				</section>
 				<section>
 					<section>
 						<h2>PWA in Drupal</h2>
-						<p class="fragment">Good news! Drupal makes websites<br> so there's 100% compatability.</p>
+						<p class="fragment">Good news! Drupal has 100% compatibility.</p>
+						<p class="fragment">PWAs work with all Drupal sites,<br> <strong>no decoupling or app shell needed</strong>.</p>
 					</section>
 					<section>
-						<h2>There's a module for that</h2>
-						<p><a href="https://drupal.org/project/pwa" target="_blank" rel="noopener">PWA Drupal module</a> provides near drop-in support to turn your D7 website into a simple PWA.</p>
-						<p class="fragment"><small>(🎉 <a href="https://www.drupal.org/project/pwa/releases" target="_blank" rel="noopener">now with 1.0 release!</a>)</small></p>
+						<h2>There's a module for that™</h2>
+						<p class="fragment"><a href="https://drupal.org/project/pwa" target="_blank" rel="noopener">PWA Drupal module</a> provides drop-in support<br> to turn your D7 website into a simple PWA.</p>
+						<p class="fragment">D8 is coming sometime... <a class="fragment" target="_blank" href="https://www.drupal.org/project/issues/pwa?text=&status=Open&priorities=All&categories=All&version=8.x&component=All">Help us out!</a></p>
 					</section>
 					<section>
-						<h2>PWA Module can...</h2>
+						<h2>PWA Module <span style="color: #9f9;">can...</span></h2>
 						<ul>
 							<li class="fragment">Precache your preferred URLs</li>
-							<li class="fragment">Go offline after one cache clear</li>
+							<li class="fragment">Provide offline support after first visit</li>
 							<li class="fragment">Provide manifest.json for installable app</li>
 							<li class="fragment">Configure (almost) everything via admin UI</li>
-							<li class="fragment"><strong>Uninstall SW when module disappears</strong></li>
+							<li class="fragment"><strong>Uninstall SW when module is disabled</strong></li>
 						</ul>
 					</section>
 					<section>
 						<h2>Self uninstall</h2>
-						<p>The SW doesn't overstay its welcome when you disable the module. No <em>zombie workers</em>!</p>
-						<p class="fragment">This is a concern for any domain, but especially likely on plugin-based CMS like Drupal or WordPress.</p>
+						<p>The SW doesn't overstay its welcome when<br> you disable the module. <em>No zombie workers</em>!</p>
+						<p class="fragment">Avoids big problems on a plugin-based<br> CMS like Drupal or WordPress.</p>
 					</section>
 					<section>
-						<h2>PWA module cannot...</h2>
+						<h2>PWA module <span style="color: #f99;">cannot...</span></h2>
 						<ul>
 							<li class="fragment">Handle push notifications</li>
 							<li class="fragment">Handle background sync</li>
@@ -153,13 +168,40 @@
 						<p class="fragment">Instead of opinionated implementations, these bits are probably best supplied with a Drupal API.</p>
 					</section>
 					<section>
-						<h2>PWA in action</h2>
+						<h2>Admin UX</h2>
 						<ol>
-							<li class="fragment">Install module &amp; save configuration</li>
-							<li class="fragment">Clear cache</li>
-							<li class="fragment">PWA module will make requests to your cache whitelist and cache all assets found within HTML response!!!</li>
-							<li class="fragment">Your cache is pre-filled with any CSS/JS found within the cached URLs.</li>
+							<li class="fragment">Install module &amp; edit settings</li>
+							<li class="fragment">Module makes requests to your whitelist<br> and generates a SW with pre-cache.</li>
 						</ol>
+					</section>
+					<section>
+						<h2>Manifest config</h2>
+						<img class="fragment scroll" src="img/admin_config_system_pwa.png" alt="PWA add-to-homescreen config">
+					</section>
+					<section>
+						<h2>SW config</h2>
+						<img class="fragment scroll" src="img/admin_config_system_pwa_serviceworker.png" alt="PWA SW config">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Quick demo</h2>
+					</section>
+					<section>
+						<img class="fragment" src="img/pwa-demo2.gif" alt="quick screencase of PWA in action" style="transform: translateY(-32px)">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>What about D8?</h2>
+						<blockquote class="fragment">
+							<p>"You said all Drupal sites"</p>
+						</blockquote>
+					</section>
+					<section>
+						<p>I'm a frontend dev with D7 experience.</p>
+						<p class="fragment">I need <strong>YOUR</strong> help with D8!</p>
+						<p class="fragment"><a target="_blank" href="https://www.drupal.org/project/issues/pwa?text=&status=Open&priorities=All&categories=All&version=8.x&component=All">PWA D8 issue queue</a></p>
 					</section>
 				</section>
 				<section>
@@ -169,12 +211,15 @@
 					</section>
 					<section>
 						<h2>Service Worker API</h2>
-						<p><a href="https://www.drupal.org/project/serviceworker/issues/2679457">#2679457</a> is a Service Worker API roadmap. Hashing out ideas for a central Drupal API that allows modules to request custom functionality.</p>
-						<p class="fragment">Using frontend community tools, we can supply a "Drupal builder" based on good ol' hooks.</p>
+						<p>We're planning a <a href="https://www.drupal.org/project/serviceworker/issues/2679457">Service Worker API</a> and<br> hashing out ideas for a centralized Drupal API.</p>
+						<p class="fragment">Plan: leverage JS community tools<br> to generate a customized Service Worker.</p>
 					</section>
 					<section>
 						<h2>Ideal Outcome</h2>
-						<p>Allowing unrelated modules/themes to request specific features of PWA functionality.</p>
+						<p>Allow unrelated modules/themes to request specific features of PWA functionality using hooks.</p>
+					</section>
+					<section>
+						<h2>Possibilities with SW API</h2>
 						<ul>
 							<li class="fragment">Push notification module</li>
 							<li class="fragment">Background sync module</li>
